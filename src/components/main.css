@@ -559,6 +559,15 @@ input{
         display: none;
     }
 }
+@media screen and (max-width:958px){
+     .card_third{
+        height: 400px;
+        width: 550px;
+    }
+    .card_third h1{
+        width: 100px;
+    }
+}
 @media screen and (max-width:644px) {
     .inp_tickets input{
       width: 200px;
@@ -579,5 +588,63 @@ input{
     }
     .card_third p{
         font-size: 12px;
+    }
+    .home_page h1{
+        font-size: 26px;
+    }
+    .home_page p{
+        font-size: 19px;
+    }
+    .btns_homePage{
+        display: flex;
+        flex-direction: column;
+    }
+    .third_holder p{
+        font-size: 14px;
+    }
+    .third_holder h1{
+        font-size: 22px;
+    }
+    .card_third{
+        height: 400px;
+        width: 300px;
+    }
+    .input_end h1{
+        font-size: 20px;
+        width: 300px;
+    }
+    .input_end input{
+        width: 300px;
+    }
+    .cart_footer:nth-child(3){
+        display: none;
+    }
+    .black_bg p{
+        font-size: 18px;
+    }
+    .black_bg h1{
+        font-size: 22px;
+    }
+    .black_bg button{
+        width: 200px;
+        height: 40px;
+        font-size: 18px;
+    }
+    .holder_tickets h1{
+        font-size: 20px;
+    }
+}
+@media screen and (max-width:444px) {
+    .links{
+        display: flex;
+        gap: 1px;
+    }
+    .card_third{
+        height: 400px;
+        width: 300px;
+    }
+    .w200 input{
+        width: 200px;
+        margin-left: 150px;
     }
 }

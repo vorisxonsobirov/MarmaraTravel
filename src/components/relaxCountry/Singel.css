@@ -27,3 +27,12 @@
 .more_txt h3{
     font-size: 30px;
 }
+@media screen and (max-width:600px){
+    .hld_flex{
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+    }
+}
