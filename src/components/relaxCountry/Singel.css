@@ -1,0 +1,29 @@
+.container{
+    max-width: 1920;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+.hold_text{
+    display: flex;
+    justify-content: start;
+    margin-top: 50px;
+    color: red;
+    font-size: 40px;
+}
+
+.hld_flex{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 100px;
+    align-items: start;
+}
+.h1_p_flex{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    width: 50%;
+}
+.more_txt h3{
+    font-size: 30px;
+}
