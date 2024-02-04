@@ -572,3 +572,12 @@ input{
         margin-right: 80px;
     }
 }
+@media screen and (max-width:600px) {
+    .card_third h1{
+        font-size: 17px;
+        width: 200px;
+    }
+    .card_third p{
+        font-size: 12px;
+    }
+}
