@@ -557,6 +557,24 @@ input{
     font-weight: 500;
     margin-bottom: 50px;
 }
+.inp_tickets button{
+    width: 200px;
+    height: 50px;
+    border: none;
+    border-radius: 30px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: rgb(160, 2, 2);
+    color: white;
+    font-weight: 600;
+    transition: 1s;
+}
+.inp_tickets button:hover{
+    border: 2px solid rgb(160, 2, 2);
+    background-color: white;
+    color: #B81A1A;
+}
+
 .inp_tickets{
     display: flex;
     flex-direction: column;

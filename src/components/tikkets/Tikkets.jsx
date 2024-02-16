@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import "../main.css";
-import { Link } from 'react-router-dom';
-import {motion} from "framer-motion"
+import { motion } from "framer-motion"
 
 const Tikkets = () => {
   const [adultsCount, setAdultsCount] = useState(1);
@@ -9,6 +7,13 @@ const Tikkets = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [businessClassChecked, setBusinessClassChecked] = useState(false);
   const [economyClassChecked, setEconomyClassChecked] = useState(false);
+  const [name, setName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [departureCity, setDepartureCity] = useState('');
+  const [destinationCity, setDestinationCity] = useState('');
+  const [messageSent, setMessageSent] = useState(false);
+  const botToken = '6853416689:AAHZYiEPCCiSPHFKV2D09NK0Dfp6WnIw054';
+  const chatId = '1723957261';
 
   const handleIncrement = (type) => {
     if (type === 'adults') {
@@ -24,6 +29,43 @@ const Tikkets = () => {
     } else if (type === 'children' && childrenCount > 0) {
       setChildrenCount(childrenCount - 1);
     }
+  };
+
+  const sendDataToTelegram = () => {
+    const message = `
+      Город вылета: ${departureCity}
+      Город прилёта: ${destinationCity}
+      Количество взрослых: ${adultsCount}
+      Количество детей: ${childrenCount}
+      Багаж: ${isChecked ? 'Да' : 'Нет'}
+      Бизнес класс: ${businessClassChecked ? 'Да' : 'Нет'}
+      Эконом класс: ${economyClassChecked ? 'Да' : 'Нет'}
+      Имя: ${name}
+      Номер: ${phoneNumber}
+    `;
+
+    fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`, {
+      method: 'GET',
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      // Сообщение успешно отправлено, сбросить состояния и показать благодарность
+      setMessageSent(true);
+      setAdultsCount(1);
+      setChildrenCount(0);
+      setIsChecked(false);
+      setBusinessClassChecked(false);
+      setEconomyClassChecked(false);
+      setName('');
+      setPhoneNumber('');
+      setDepartureCity('');
+      setDestinationCity('');
+    })
+    .catch(error => {
+      console.error('There has been a problem with your fetch operation:', error);
+    });
   };
 
   return (
@@ -43,6 +85,7 @@ const Tikkets = () => {
               <a href="https://t.me/voris01"><motion.button
                initial={{ opacity: 0, x: -150 }} 
                animate={{ opacity: 1, x: 0 }}
+               onClick={sendDataToTelegram}
               >Написать в ТГ</motion.button></a>
             </div>
           </div>
@@ -51,11 +94,11 @@ const Tikkets = () => {
           <h1>Забронировать АВИАбилет</h1>
           <div className="inp_tickets">
             <p>Город вылета</p>
-            <input type="text" />
+            <input type="text" value={departureCity} onChange={(e) => setDepartureCity(e.target.value)} />
           </div>
           <div className="inp_tickets">
-            <p>Куда летим?</p>
-            <input type="text" />
+            <p>Город прилёта</p>
+            <input type="text" value={destinationCity} onChange={(e) => setDestinationCity(e.target.value)} />
           </div>
           <div className="w200">
             <p>Количество человек</p>
@@ -97,11 +140,19 @@ const Tikkets = () => {
           </div>
           <div className="inp_tickets">
             <p>Ваше имя</p>
-            <input type="text" />
+            <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
           </div>
           <div className="inp_tickets">
             <p>Ваш номер</p>
-            <input type="number" />
+            <input type="number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+          </div>
+          {messageSent && (
+            <div className="inp_tickets">
+              <p>Спасибо за выбор! Мы всегда рады вам. Скоро с вами свяжемся.</p>
+            </div>
+          )}
+          <div className="inp_tickets">
+            <button onClick={sendDataToTelegram}>Отправить</button>
           </div>
         </div>
       </div>
