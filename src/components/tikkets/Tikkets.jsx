@@ -73,6 +73,10 @@ const Tikkets = () => {
               <button className='minus' onClick={() => handleIncrement('children')}>+</button>
             </div>
           </div>
+          <div className="input_none">
+            <label htmlFor="num">Количество человек</label>
+            <input name='num' type="number"/>
+          </div>
           <div className="inp_tickets">
             <p>Багаж?</p>
             <label>

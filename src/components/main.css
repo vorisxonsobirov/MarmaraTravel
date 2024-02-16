@@ -603,7 +603,9 @@ input{
     text-align: center;
     font-size: 24px;
 }
-
+.input_none{
+    display: none;
+}
 @media screen and (max-width:1068px){
     .end{
         display: none;
@@ -684,6 +686,9 @@ input{
     .holder_tickets h1{
         font-size: 20px;
     }
+    .links p{
+        font-size: 12px;
+    }
 }
 @media screen and (max-width:444px) {
     .links{
@@ -697,5 +702,26 @@ input{
     .w200 input{
         width: 200px;
         margin-left: 150px;
+    }
+    .cart_footer:nth-child(2){
+        display: none;
+    }
+    .w200{
+        display: none;
+    }
+    .input_none{
+        display: flex;
+        flex-direction: column;
+        margin-top: 50px;
+    }
+    .input_none input{
+        margin-top: 30px;
+        width: 200px;
+        border: none;
+        outline: none;
+        border-bottom: 1px solid black;
+    }
+    .input_none label{
+        font-size: 20px;
     }
 }
