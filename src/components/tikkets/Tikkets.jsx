@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import "../main.css";
 import { Link } from 'react-router-dom';
+import {motion} from "framer-motion"
 
 const Tikkets = () => {
   const [adultsCount, setAdultsCount] = useState(1);
   const [childrenCount, setChildrenCount] = useState(0);
   const [isChecked, setIsChecked] = useState(false);
+  const [businessClassChecked, setBusinessClassChecked] = useState(false);
+  const [economyClassChecked, setEconomyClassChecked] = useState(false);
 
   const handleIncrement = (type) => {
     if (type === 'adults') {
@@ -28,10 +31,19 @@ const Tikkets = () => {
       <div className="container">
         <div className="plane">
           <div className="black_bg">
-            <p>МАРМАРА ТРЭВЕЛ</p>
-            <h1>АВИА БИЛЕТЫ</h1>
+            <motion.p
+                initial={{ opacity: 0, y: -150 }}
+                animate={{ opacity: 1, y: 0 }}
+            >Marmara Travel</motion.p>
+            <motion.h1
+                initial={{ opacity: 0, y: 150 }}
+                animate={{ opacity: 1, y: 0 }}
+            >АВИА БИЛЕТЫ</motion.h1>
             <div className="btns_homePage">
-              <a href="https://t.me/voris01"><button>Написать в ТГ</button></a>
+              <a href="https://t.me/voris01"><motion.button
+               initial={{ opacity: 0, x: -150 }} 
+               animate={{ opacity: 1, x: 0 }}
+              >Написать в ТГ</motion.button></a>
             </div>
           </div>
         </div>
@@ -63,13 +75,21 @@ const Tikkets = () => {
           </div>
           <div className="inp_tickets">
             <p>Багаж?</p>
-            <input type="checkbox" checked={isChecked} onChange={() => setIsChecked(!isChecked)} />
+            <label>
+              Багаж
+              <input type="checkbox" checked={isChecked} onChange={() => setIsChecked(!isChecked)} />
+            </label>
           </div>
-          {/* Остальные поля инпутов... */}
           <div className="inp_tickets">
             <p>Класс</p>
-            <input type="checkbox" />
-            <input type="checkbox" />
+            <label>
+              Бизнес класс
+              <input type="checkbox" checked={businessClassChecked} onChange={() => setBusinessClassChecked(!businessClassChecked)} />
+            </label>
+            <label>
+              Эконом класс
+              <input type="checkbox" checked={economyClassChecked} onChange={() => setEconomyClassChecked(!economyClassChecked)} />
+            </label>
           </div>
           <div className="inp_tickets">
             <p>Ваше имя</p>

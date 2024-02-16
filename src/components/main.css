@@ -10,17 +10,60 @@ a{
 .container{
     max-width: 1920px;
     width: 100%;
+    height: auto;
     margin: 0 auto;
     padding: 0 10px;
 }
-.navbar{
+
+/* navbar */
+
+
+.navbar {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    background: #497679;
-    height: 70px;
-    padding:  0 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    align-items: center;    
+    width: 100%;
+    height: 65px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px 20px;
+    background-color: #497679; /* Начальный цвет навбара */
+    padding: 10px 20px;
+    transition: background-color 0.3s ease; /* Анимация перехода цвета */
+    z-index: 1000;
 }
+
+.links {
+    display: flex;
+}
+
+.links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+/* Дополнительные стили для прозрачного навбара при скролле */
+.container.scrolled .navbar {
+    background-color: rgba(0, 0, 0, 0.2); /* Прозрачный цвет навбара при скролле вниз */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .links{
     display: flex;
     align-items: center;
@@ -28,9 +71,10 @@ a{
 }
 .links p{
     color: white;
+    transition: 0.4s;
 }
 .links p:hover{
-    border-bottom: 1px solid yellow;
+    transform: translateY(20deg);
     color: yellow;
 }
 
@@ -69,12 +113,14 @@ a{
     font-size: 30px;
     color: white;
     font-weight: 700;
+    transition: 1s;
 }
 .black_bg h1{
     color: white;
     font-weight: 700;
     font-size: 74px;
     width: 70%;
+    transition: 1s;
 }
 .black_bg{
     display: flex;
@@ -91,7 +137,7 @@ a{
     background-color: rgb(160, 2, 2);
     color: white;
     font-weight: 600;
-    transition: 0.2s all;
+    transition: 1s;
 }
 .btns_homePage button:hover{
     border: 2px solid rgb(160, 2, 2);
@@ -122,12 +168,14 @@ a{
     font-size: 30px;
     color: white;
     font-weight: 700;
+    transition: 1s;
 }
 .home_page h1{
     color: white;
     font-weight: 700;
     font-size: 74px;
     width: 70%;
+    transition: 1s;
 }
 .btns_homePage{
     display: flex;
@@ -144,7 +192,7 @@ a{
     background-color: rgb(160, 2, 2);
     color: white;
     font-weight: 600;
-    transition: 0.2s all;
+    transition: 1s;
 }
 .btns_homePage button:hover{
     border: 2px solid rgb(160, 2, 2);
@@ -300,10 +348,12 @@ input{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: end;
     padding: 40px 20px;
     background-color: #497679;
     margin-top: 100px;
+    height: auto;
+    width: 100%;
     color: white;
 }
 .contact_footer{
@@ -354,6 +404,7 @@ input{
     height: 440px;
     transition: 0.3s all;
     z-index: 1;
+    margin-top:50px;
 }
 .card_relax:hover{
     transform: scale(1.1);
@@ -392,7 +443,6 @@ input{
     color: #497679;
     font-size: 18px;
     cursor: pointer;
-    transition: 0.3s all;
 }
 .position_txt button:hover{
     background-color: #497679;
@@ -621,6 +671,7 @@ input{
     }
     .black_bg p{
         font-size: 18px;
+
     }
     .black_bg h1{
         font-size: 22px;

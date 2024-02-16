@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import data from '../Data';
 import '../main.css';
+import {motion} from "framer-motion"
 
 const RelaxCountry = () => {  
   return (
@@ -9,10 +10,17 @@ const RelaxCountry = () => {
       <div className="container">
              <div className="maldivas">
                <div className="black_bg">
-                <p>МАРМАРА ТРЭВЕЛ</p>
-                <h1>Cтраны для отдыха</h1>
+                <motion.p
+                     initial={{ opacity: 0, y: -150 }}
+                     animate={{ opacity: 1, y: 0 }}
+                >Marmara Travel</motion.p>
+                <motion.h1
+                   initial={{ opacity: 0, y: 150 }}
+                   animate={{ opacity: 1, y: 0 }}
+                >Cтраны для отдыха</motion.h1>
                 <div className="btns_homePage">
-                   <a href="https://t.me/voris01"> <button>Написать в ТГ</button></a>
+                   <a href="https://t.me/voris01"> <motion.button    initial={{ opacity: 0, x: -150 }} 
+                                animate={{ opacity: 1, x: 0 }} >Написать в ТГ</motion.button></a>
                 </div>
             </div>
         </div>

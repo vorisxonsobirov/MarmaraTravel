@@ -1,24 +1,67 @@
-import React from 'react'
-import "../main.css"
-import logo from "../../assets/Link.png"
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import logo from "../../assets/Link.png";
+import "../main.css";
+import { motion } from 'framer-motion'
+
 
 const Navbar = () => {
-    return (
-        <>
-            <div className="container">
-                <div className="navbar">
-                    <Link to="/"><img src={logo} alt="" /></Link>
-                    <div className="links">
-                        <Link to="/relaxCountry"><p>Страна отдыха</p></Link>
-                        <Link to="/tikkets"><p>Авиа билеты</p></Link>
-                        {/* <Link><p>Корзинка</p></Link> */}
-                        <Link to="/contact"><p>Обратная связь</p></Link>
-                    </div>
-                </div>
-            </div>
-        </>
-    )
-}
+    const [isScrolled, setIsScrolled] = useState(false);
 
-export default Navbar
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollTop = window.pageYOffset;
+            setIsScrolled(scrollTop > 0);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    return (
+        <div className={`container ${isScrolled ? 'scrolled' : ''}`}>
+            <div className="navbar">
+                <Link to="/"><motion.img
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }} 
+                src={logo} alt="" /></Link>
+                 {motion} 
+
+                <div className="links">
+                    <Link to="/relaxCountry">
+                        <motion.p
+                        initial={{ opacity: 0, y: 50 }}
+                        animate={{ opacity: 1, y: 0 }} 
+                        >
+                            Страна отдыха
+                        </motion.p>
+                    </Link>
+                    <Link to="/tickets">
+                        <motion.p
+                            initial={{ opacity: 0, y: -50 }}
+                            animate={{ opacity: 1, y: 0 }} 
+                        >
+                            Авиабилеты
+                        </motion.p>
+                    </Link>
+                    <Link to="/contact">
+                        <motion.p
+                            initial={{ opacity: 0, x: 150 }} 
+                            animate={{ opacity: 1, x: 0 }} 
+                        >
+                            Обратная связь
+                        </motion.p>
+                    </Link>
+                </div>
+
+            </div>
+        </div>
+
+    );
+};
+
+export default Navbar;
+
